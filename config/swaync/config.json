@@ -1,0 +1,69 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "ignore-gtk-theme": true,
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-layer": "overlay",
+  "control-center-margin-top": 60,
+  "control-center-margin-bottom": 24,
+  "control-center-margin-right": 16,
+  "control-center-width": 400,
+  "control-center-height": 700,
+  "notification-window-width": 380,
+  "timeout": 8,
+  "timeout-low": 5,
+  "timeout-critical": 0,
+  "fit-to-screen": false,
+  "keyboard-shortcuts": true,
+  "image-visibility": "when-available",
+  "hide-on-clear": false,
+  "hide-on-action": true,
+  "text-empty": "Nenhum aviso por aqui.",
+  "widgets": [
+    "title",
+    "buttons-grid",
+    "dnd",
+    "volume",
+    "notifications"
+  ],
+  "widget-config": {
+    "title": {
+      "text": "CENTRAL DE AVISOS",
+      "clear-all-button": true,
+      "button-text": "LIMPAR"
+    },
+    "dnd": {
+      "text": "N\u00c3O PERTURBE"
+    },
+    "volume": {
+      "label": "VOL",
+      "show-per-app": false
+    },
+    "buttons-grid": {
+      "buttons-per-row": 4,
+      "actions": [
+        {
+          "label": "WI-FI",
+          "command": "nm-connection-editor"
+        },
+        {
+          "label": "BT",
+          "command": "blueman-manager"
+        },
+        {
+          "label": "FOCO",
+          "command": "~/.config/mainframe/control focus",
+          "type": "toggle",
+          "update-command": "~/.config/mainframe/control focus-status"
+        },
+        {
+          "label": "MUDO",
+          "command": "~/.config/mainframe/control volume --toggle",
+          "type": "toggle",
+          "update-command": "pamixer --get-mute"
+        }
+      ]
+    }
+  }
+}

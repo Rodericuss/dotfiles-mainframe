@@ -1,0 +1,19 @@
+* { font-family: "IBM Plex Mono", "GeistMono Nerd Font", monospace; font-size: 11px; font-weight: normal; min-height: 0; border-radius: 0; color: #CFC4AA; }
+window#waybar { background: #15130E; border: 1px solid #6E5836; }
+button { border: 0; box-shadow: none; padding: 0; }
+#custom-dashboard { background: #B8925A; color: #0D0C09; letter-spacing: 2px; font-weight: 600; padding: 0 14px; }
+#workspaces button { padding: 0 12px; color: #6E5836; border-bottom: 2px solid transparent; }
+#workspaces button label { color: inherit; }
+#workspaces button:not(.empty) { color: #CFC4AA; border-bottom-color: #B8925A; }
+#workspaces button.active { background: #C8743F; color: #0D0C09; border-bottom-color: #C8743F; }
+#workspaces button.urgent { background: #D0553F; color: #0D0C09; }
+#workspaces button:hover { background: #3A3224; color: #9EEA8E; }
+#window { color: #9A8E73; padding: 0 12px; }
+#cpu, #memory, #custom-volume, #network, #mpris, #custom-notifications, #battery { border-left: 1px solid #3A3224; padding: 0 10px; }
+#cpu, #memory { color: #CFC4AA; }
+#network { color: #5BA89B; }
+#custom-clock { background: #9EEA8E; color: #0D0C09; font-weight: 600; padding: 0 14px; }
+#cpu.warning { color: #C8743F; }
+#battery.critical { background: #D0553F; color: #0D0C09; }
+tooltip { background: #15130E; border: 1px solid #B8925A; }
+tooltip label { color: #CFC4AA; }

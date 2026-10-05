@@ -1,0 +1,14 @@
+# Original reference bundles and private screenshot iterations
+/*.png
+/*.html
+/*.zip
+/reference/
+/screenshots/
+# Machine-specific generated bases are never distributed
+/config/hypr/hyprland.lua
+/config/kitty/kitty.conf
+/scripts/build_base.py
+__pycache__/
+*.pyc
+.env
+*.log

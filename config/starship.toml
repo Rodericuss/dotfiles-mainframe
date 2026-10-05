@@ -1,0 +1,44 @@
+add_newline = true
+format = "[┌─ ](#B8925A)$directory$git_branch$git_status$elixir$nodejs$python$rust$lua$status$cmd_duration$line_break[└─▶ ](#B8925A)$character"
+[directory]
+style = "bold #B8925A"
+format = "[$path]($style) "
+truncation_length = 4
+truncation_symbol = "…/"
+[git_branch]
+symbol = "⎇ "
+style = "#5BA89B"
+format = "[$symbol$branch]($style) "
+[git_status]
+style = "#E0B04E"
+format = "([$all_status$ahead_behind]($style) )"
+modified = "±$count"
+untracked = "?$count"
+staged = "+$count"
+[elixir]
+style = "#6F93A8"
+format = "[· ex $version]($style) "
+[nodejs]
+style = "#6F93A8"
+format = "[· node $version]($style) "
+[python]
+style = "#6F93A8"
+format = "[· py $version]($style) "
+[rust]
+style = "#6F93A8"
+format = "[· rs $version]($style) "
+[lua]
+style = "#6F93A8"
+format = "[· lua $version]($style) "
+[status]
+disabled = false
+style = "#D0553F"
+format = "[✕ $status]($style) "
+[cmd_duration]
+min_time = 1000
+style = "#C8743F"
+format = "[◷ $duration]($style) "
+[character]
+success_symbol = ""
+error_symbol = ""
+vimcmd_symbol = "[◀](#9EEA8E)"

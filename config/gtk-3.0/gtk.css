@@ -1,0 +1,40 @@
+/* Mainframe Latão — GTK 3 controls. */
+@define-color theme_bg_color #15130E;
+@define-color theme_fg_color #CFC4AA;
+@define-color theme_base_color #0D0C09;
+@define-color theme_text_color #E9DFC8;
+@define-color theme_selected_bg_color #9EEA8E;
+@define-color theme_selected_fg_color #0D0C09;
+@define-color insensitive_fg_color #6E5836;
+@define-color borders #3A3224;
+window, dialog, .background { background-color: #15130E; color: #CFC4AA; }
+headerbar, toolbar, menubar { background: #15130E; color: #E9DFC8; border-bottom: 1px solid #6E5836; border-radius: 0; box-shadow: none; }
+headerbar { min-height: 32px; }
+button { background-image: none; background-color: #15130E; color: #CFC4AA; border: 1px solid #6E5836; border-radius: 2px; box-shadow: none; text-shadow: none; }
+button:hover { background-color: #1C1912; border-color: #C8743F; }
+button:checked, button.suggested-action { background: #C8743F; color: #0D0C09; border-color: #C8743F; }
+button.destructive-action { color: #D0553F; border-color: #D0553F; }
+entry, textview, textview text, treeview, iconview { background: #0D0C09; color: #E9DFC8; caret-color: #9EEA8E; }
+entry { border: 1px solid #6E5836; border-radius: 2px; box-shadow: none; }
+entry:focus { border-color: #C8743F; }
+selection, treeview:selected, iconview:selected, row:selected { background: #9EEA8E; color: #0D0C09; }
+.sidebar, placessidebar, list { background: #15130E; color: #9A8E73; }
+.sidebar row:selected, placessidebar row:selected { background: #9EEA8E; color: #0D0C09; }
+notebook > header { background: #15130E; border-color: #3A3224; }
+notebook > header tab { border-radius: 0; box-shadow: none; color: #9A8E73; }
+notebook > header tab:checked { color: #E9DFC8; border-bottom: 2px solid #C8743F; }
+menu, menuitem, popover { background: #15130E; color: #CFC4AA; border-radius: 0; }
+menuitem:hover { background: #9EEA8E; color: #0D0C09; }
+switch { background: #282318; border: 1px solid #6E5836; border-radius: 0; }
+switch:checked { background: #C8743F; }
+switch slider { background: #0D0C09; border-radius: 0; }
+check, radio { background: #0D0C09; border: 1px solid #6E5836; }
+check:checked, radio:checked { background: #C8743F; color: #0D0C09; }
+progressbar trough, scale trough { background: #282318; border-radius: 0; }
+progressbar progress { background: #9EEA8E; border-radius: 0; }
+scale highlight { background: #C8743F; }
+scale slider { background: #B8925A; }
+scrollbar { background: #15130E; }
+scrollbar slider { background: #6E5836; min-width: 5px; }
+separator { background: #3A3224; }
+tooltip { background: #15130E; color: #E9DFC8; border: 1px solid #B8925A; }

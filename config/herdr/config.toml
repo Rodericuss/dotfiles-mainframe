@@ -1,0 +1,48 @@
+onboarding = false
+[keys]
+prefix = "ctrl+s"
+
+# Workspaces
+switch_workspace = "prefix+shift+1..9"
+
+# Tabs
+switch_tab = "prefix+1..9"
+
+# Nice extras
+new_workspace = "prefix+shift+n"
+workspace_picker = ["prefix+w", "prefix+t"]
+
+new_tab = "prefix+c"
+previous_tab = "prefix+p"
+next_tab = "prefix+n"
+
+reload_config = "prefix+shift+r"
+detach = "prefix+q"
+help = "prefix+?"
+
+[ui]
+agent_panel_sort = "spaces"
+show_agent_labels_on_pane_borders = true
+
+[theme]
+name = "catppuccin"
+auto_switch = false
+
+# Mainframe Latão. Supported custom tokens; preserve existing keys/session settings.
+[theme.custom]
+panel_bg = "#0D0C09"
+surface0 = "#15130E"
+surface1 = "#1C1912"
+surface_dim = "#15130E"
+overlay0 = "#6E5836"
+overlay1 = "#9A8E73"
+text = "#E9DFC8"
+subtext0 = "#9A8E73"
+accent = "#C8743F"
+mauve = "#B8925A"
+green = "#9EEA8E"
+yellow = "#E0B04E"
+red = "#D0553F"
+blue = "#6F93A8"
+teal = "#5BA89B"
+peach = "#C8743F"

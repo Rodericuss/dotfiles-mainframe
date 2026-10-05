@@ -1,0 +1,38 @@
+@import url("/etc/xdg/swaync/style.css");
+* { font-family: "IBM Plex Mono", "GeistMono Nerd Font", monospace; font-size: 12px; border-radius: 0; text-shadow: none; }
+.control-center { background: #15130E; color: #CFC4AA; border: 2px solid #B8925A; padding: 12px; box-shadow: none; }
+.notification-row { outline: none; }
+.notification { background: #15130E; border: 1px solid #6E5836; border-radius: 0; color: #CFC4AA; box-shadow: none; padding: 0; margin: 6px 0; }
+.notification-content { background: #15130E; padding: 12px; border-radius: 0; }
+.notification-default-action { background: #15130E; border-radius: 0; }
+.notification.critical { border: 2px solid #D0553F; }
+.notification.critical .summary { color: #D0553F; }
+.summary { color: #E9DFC8; font-size: 13px; font-weight: 600; }
+.body { color: #9A8E73; }
+.time { color: #6E5836; font-size: 10px; }
+.app-name { color: #B8925A; }
+button, .notification-action { background: #15130E; color: #B8925A; border: 1px solid #6E5836; border-radius: 0; box-shadow: none; padding: 8px; }
+button:hover, .notification-action:hover { background: #1C1912; border-color: #C8743F; }
+.notification-action { background: #C8743F; color: #0D0C09; }
+.close-button { background: #15130E; color: #B8925A; border-radius: 0; }
+.widget-title { color: #B8925A; margin: 0 0 14px; font-size: 12px; }
+.widget-title > button { font-size: 10px; }
+.widget-buttons-grid { padding: 4px 0 12px; }
+.widget-buttons-grid > flowbox > flowboxchild > button { background: #15130E; color: #B8925A; padding: 12px 4px; border: 1px solid #6E5836; }
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked { background: #C8743F; color: #0D0C09; border-color: #C8743F; }
+.widget-dnd { color: #9A8E73; margin-top: 12px; font-size: 10px; }
+switch { background: #282318; border: 1px solid #6E5836; }
+switch:checked { background: #C8743F; }
+switch slider { background: #B8925A; border-radius: 0; }
+.widget-volume, .widget-backlight { background: #15130E; color: #B8925A; margin: 8px 0; padding: 4px; border-radius: 0; }
+scale trough { background: #282318; min-height: 6px; border-radius: 0; }
+scale highlight { background: #C8743F; border-radius: 0; }
+scale slider { background: #B8925A; border: 0; min-width: 10px; min-height: 14px; border-radius: 0; }
+scrollbar { background: transparent; }
+scrollbar slider { background: #6E5836; min-width: 3px; }
+.blank-window { background: transparent; }
+:root { --cc-bg:#15130E; --text-color:#CFC4AA; --text-color-disabled:#6E5836; --border-radius:0px; --notification-shadow:none; --noti-bg:21,19,14; --noti-bg-alpha:1; --noti-bg-hover:#1C1912; --noti-bg-focus:#1C1912; --noti-border-color:#6E5836; --font-size-body:12px; --font-size-summary:13px; }
+.control-center, .widget-title > button, .widget-buttons-grid flowboxchild > button, .widget-dnd switch, .widget-dnd switch slider { border-radius:0; }
+.widget-title > label { font-size:12px; letter-spacing:2px; }
+.widget-dnd label { font-size:10px; color:#9A8E73; }
+.control-center .control-center-list-placeholder image { -gtk-icon-size:24px; opacity:0.4; }

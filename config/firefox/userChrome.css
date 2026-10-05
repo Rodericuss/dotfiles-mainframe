@@ -1,0 +1,21 @@
+/* Mainframe Latão — compact Firefox chrome. */
+:root { --mf-bg:#0D0C09; --mf-panel:#15130E; --mf-line:#3A3224; --mf-fg:#CFC4AA; --toolbar-bgcolor:#15130E !important; --toolbar-color:#CFC4AA !important; --lwt-text-color:#CFC4AA !important; --lwt-accent-color:#0D0C09 !important; --toolbar-field-background-color:#0D0C09 !important; --toolbar-field-color:#9EEA8E !important; --toolbar-field-focus-background-color:#0D0C09 !important; --toolbar-field-focus-color:#9EEA8E !important; --arrowpanel-background:#15130E !important; --arrowpanel-color:#E9DFC8 !important; --arrowpanel-border-color:#6E5836 !important; color-scheme:dark !important; }
+#main-window,#navigator-toolbox,#nav-bar,#PersonalToolbar,#sidebar-box,#sidebar-main,#sidebar-header { background:var(--mf-panel) !important; color:var(--mf-fg) !important; }
+#navigator-toolbox { border-bottom:1px solid #6E5836 !important; }
+#nav-bar { padding:3px 8px !important; }
+#TabsToolbar { display:none !important; }
+#sidebar-header { display:none !important; }
+#sidebar-box { min-width:210px !important; max-width:320px !important; width:240px !important; border:0 !important; }
+#sidebar-splitter { width:1px !important; background:#3A3224 !important; border:0 !important; }
+#urlbar,#searchbar { font:13px "IBM Plex Mono",monospace !important; }
+#urlbar-background,#searchbar { background:#0D0C09 !important; border:1px solid #6E5836 !important; border-radius:0 !important; box-shadow:none !important; }
+#urlbar[focused] #urlbar-background { border-color:#C8743F !important; }
+#urlbar-input,#urlbar-scheme { color:#9EEA8E !important; caret-color:#9EEA8E !important; }
+#urlbar[open] .urlbarView { background:#15130E !important; color:#CFC4AA !important; border-radius:0 !important; }
+.urlbarView-row[selected] .urlbarView-row-inner { background:#1C1912 !important; color:#9EEA8E !important; border-radius:0 !important; }
+.toolbarbutton-1 { color:#B8925A !important; fill:#B8925A !important; }
+.toolbarbutton-1 > .toolbarbutton-icon,.toolbarbutton-1 > .toolbarbutton-badge-stack { border-radius:0 !important; }
+#PersonalToolbar { font:12px "IBM Plex Sans Condensed",sans-serif !important; padding:0 8px !important; }
+#PersonalToolbar .bookmark-item { color:#9A8E73 !important; border-radius:0 !important; }
+panel,menupopup { --panel-background:#15130E !important; --panel-color:#CFC4AA !important; --panel-border-color:#6E5836 !important; --panel-border-radius:0 !important; }
+#urlbar, #urlbar .urlbar-input-container, #urlbar-background { border-radius:0 !important; box-shadow:none !important; }

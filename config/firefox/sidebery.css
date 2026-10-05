@@ -1,0 +1,16 @@
+:root,body,#root.root { background:#15130E !important; color:#CFC4AA !important; font-family:"IBM Plex Sans Condensed",sans-serif !important; color-scheme:dark !important;
+--frame-bg:#15130E !important; --frame-fg:#CFC4AA !important; --toolbar-bg:#15130E !important; --toolbar-fg:#B8925A !important;
+--tabs-font:14px "IBM Plex Sans Condensed",sans-serif !important; --tabs-height:31px !important; --tabs-margin:0px !important; --tabs-inner-gap:8px !important; --tabs-border-radius:0px !important;
+--tabs-normal-bg:#15130E !important; --tabs-normal-fg:#9A8E73 !important; --tabs-activated-bg:#1C1912 !important; --tabs-activated-fg:#E9DFC8 !important; --tabs-selected-bg:#3A3224 !important; --tabs-selected-fg:#E9DFC8 !important;
+--tabs-discarded-title-opacity:.55 !important; --active-el-bg:#1C1912 !important; --ctx-menu-bg:#15130E !important; --ctx-menu-fg:#CFC4AA !important; --ctx-menu-border:#6E5836 !important; --ctx-menu-separator:#3A3224 !important; --ctx-menu-shadow:none !important;
+}
+#root .Tab { border:0 !important; border-radius:0 !important; box-shadow:none !important; background:#15130E !important; color:#9A8E73 !important; }
+#root .Tab:hover { background:#1C1912 !important; }
+#root .Tab[data-active="true"] { background:#1C1912 !important; color:#E9DFC8 !important; box-shadow:inset -2px 0 #C8743F !important; }
+#root .Tab .title { color:inherit !important; }
+#root .Tab .color-layer { opacity:0 !important; }
+#root .NavigationBar { background:#15130E !important; border-bottom:1px solid #3A3224 !important; padding:0 !important; }
+#root .nav-item { border-radius:0 !important; color:#B8925A !important; }
+#root .nav-item[data-active="true"] { background:#B8925A !important; color:#0D0C09 !important; box-shadow:none !important; }
+#root .bottom-bar { background:#15130E !important; color:#6E5836 !important; border-top:1px solid #3A3224 !important; }
+#root .new-tab-btn { color:#B8925A !important; background:transparent !important; border:0 !important; border-radius:0 !important; margin:0 !important; }

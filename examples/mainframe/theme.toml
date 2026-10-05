@@ -1,0 +1,116 @@
+# Mainframe Latão — Yazi. Sharp separators and a shared phosphor/brass palette.
+[mgr]
+cwd = { fg = "#B8925A", bold = true }
+hovered = { fg = "#0D0C09", bg = "#9EEA8E" }
+preview_hovered = { fg = "#E9DFC8", bg = "#1C1912" }
+find_keyword = { fg = "#C8743F", bold = true, underline = true }
+find_position = { fg = "#E0B04E", bg = "#15130E", bold = true }
+symlink_target = { fg = "#5BA89B", italic = true }
+marker_copied = { fg = "#9EEA8E", bg = "#9EEA8E" }
+marker_cut = { fg = "#C8743F", bg = "#C8743F" }
+marker_marked = { fg = "#5BA89B", bg = "#5BA89B" }
+marker_selected = { fg = "#B8925A", bg = "#B8925A" }
+count_copied = { fg = "#0D0C09", bg = "#9EEA8E" }
+count_cut = { fg = "#0D0C09", bg = "#C8743F" }
+count_selected = { fg = "#0D0C09", bg = "#B8925A", bold = true }
+border_symbol = "│"
+border_style = { fg = "#3A3224" }
+syntect_theme = "~/.config/bat/themes/Mainframe.tmTheme"
+[indicator]
+preview = { fg = "#E9DFC8", bg = "#1C1912" }
+parent = { fg = "#CFC4AA", bg = "#1C1912" }
+current = { fg = "#0D0C09", bg = "#9EEA8E" }
+padding = { open = " ", close = " " }
+[tabs]
+active = { fg = "#0D0C09", bg = "#B8925A", bold = true }
+inactive = { fg = "#6E5836", bg = "#15130E" }
+sep_inner = { open = " ", close = " " }
+sep_outer = { open = "", close = "" }
+[mode]
+normal_main = { fg = "#0D0C09", bg = "#9EEA8E", bold = true }
+normal_alt = { fg = "#CFC4AA", bg = "#15130E" }
+select_main = { fg = "#0D0C09", bg = "#5BA89B", bold = true }
+select_alt = { fg = "#5BA89B", bg = "#15130E" }
+unset_main = { fg = "#0D0C09", bg = "#C8743F", bold = true }
+unset_alt = { fg = "#C8743F", bg = "#15130E" }
+[status]
+overall = { fg = "#CFC4AA", bg = "#15130E" }
+sep_left = { open = "", close = " " }
+sep_right = { open = " ", close = "" }
+perm_sep = { fg = "#6E5836" }
+perm_type = { fg = "#B8925A" }
+perm_read = { fg = "#5BA89B" }
+perm_write = { fg = "#C8743F" }
+perm_exec = { fg = "#9EEA8E" }
+progress_label = { fg = "#E9DFC8", bold = true }
+progress_normal = { fg = "#9EEA8E", bg = "#1C1912" }
+progress_error = { fg = "#D0553F", bg = "#1C1912" }
+[which]
+cols = 3
+mask = { bg = "#0D0C09" }
+cand = { fg = "#9EEA8E" }
+rest = { fg = "#B8925A" }
+desc = { fg = "#CFC4AA" }
+separator = " → "
+separator_style = { fg = "#6E5836" }
+[confirm]
+border = { fg = "#B8925A" }
+title = { fg = "#C8743F", bold = true }
+body = { fg = "#E9DFC8" }
+list = { fg = "#9A8E73" }
+btn_yes = { fg = "#0D0C09", bg = "#C8743F", bold = true }
+btn_no = { fg = "#B8925A", bg = "#15130E" }
+btn_labels = [ "  [Y]es  ", "  (N)o  " ]
+[spot]
+border = { fg = "#B8925A" }
+title = { fg = "#B8925A" }
+tbl_col = { fg = "#5BA89B" }
+tbl_cell = { fg = "#0D0C09", bg = "#9EEA8E" }
+[notify]
+title_info = { fg = "#9EEA8E" }
+title_warn = { fg = "#E0B04E" }
+title_error = { fg = "#D0553F" }
+icon_info = "●"
+icon_warn = "▲"
+icon_error = "✕"
+[pick]
+border = { fg = "#B8925A" }
+active = { fg = "#9EEA8E", bold = true }
+inactive = { fg = "#9A8E73" }
+[input]
+border = { fg = "#C8743F" }
+title = { fg = "#B8925A" }
+value = { fg = "#9EEA8E" }
+selected = { fg = "#0D0C09", bg = "#9EEA8E" }
+[cmp]
+border = { fg = "#B8925A" }
+active = { fg = "#0D0C09", bg = "#9EEA8E" }
+inactive = { fg = "#CFC4AA" }
+icon_file = "·"
+icon_folder = "▸"
+icon_command = "▶"
+[tasks]
+border = { fg = "#B8925A" }
+title = { fg = "#B8925A" }
+hovered = { fg = "#9EEA8E", bold = true }
+[help]
+on = { fg = "#9EEA8E" }
+run = { fg = "#5BA89B" }
+desc = { fg = "#CFC4AA" }
+hovered = { fg = "#0D0C09", bg = "#9EEA8E", bold = true }
+footer = { fg = "#0D0C09", bg = "#B8925A" }
+[filetype]
+directory = { fg = "#B8925A" }
+file = { fg = "#CFC4AA" }
+rules = [
+ { mime = "image/*", fg = "#B07A8C" },
+ { mime = "{audio,video}/*", fg = "#5BA89B" },
+ { mime = "application/{zip,gzip,x-tar,x-7z-compressed,x-rar}", fg = "#E0B04E" },
+ { url = "*/", fg = "#B8925A" },
+ { url = "*", fg = "#CFC4AA" },
+]
+[icon]
+prepend_conds = [
+ { if = "dir", text = "▸", fg = "#B8925A" },
+ { if = "link", text = "↗", fg = "#5BA89B" },
+]

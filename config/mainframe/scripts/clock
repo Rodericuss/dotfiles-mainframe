@@ -1,0 +1,4 @@
+#!/usr/bin/env python3
+import datetime,json
+now=datetime.datetime.now();days=['SEG','TER','QUA','QUI','SEX','SÁB','DOM']
+print(json.dumps({'text':now.strftime('%H:%M')+' · '+days[now.weekday()]+now.strftime(' %d'),'tooltip':now.strftime('%d/%m/%Y')+' · Painel / tarefas / timer'}))

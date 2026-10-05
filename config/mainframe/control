@@ -1,0 +1,112 @@
+#!/usr/bin/env python3
+"""Mainframe local controller. Arguments are never interpolated into a shell."""
+import fcntl,json,os,signal,socket,subprocess,sys,time
+from pathlib import Path
+ROOT=Path(__file__).resolve().parent
+STATE=Path.home()/'.local/state/mainframe';STATE.mkdir(parents=True,exist_ok=True)
+RUNTIME=Path(os.environ.get('XDG_RUNTIME_DIR','/tmp'))/f'mainframe-{os.getuid()}';RUNTIME.mkdir(mode=0o700,parents=True,exist_ok=True)
+def run(*args,**kw):return subprocess.run(args,capture_output=True,**kw)
+def text(*args):
+    try:return run(*args,text=True,timeout=3).stdout.strip()
+    except (OSError,subprocess.TimeoutExpired):return ''
+def daemon(args,name):
+    with open(STATE/(name+'.log'),'ab') as out:subprocess.Popen(args,stdout=out,stderr=out,start_new_session=True)
+def message(data,start=True):
+    for attempt in range(30):
+        try:
+            with socket.socket(socket.AF_UNIX) as s:s.settimeout(1);s.connect(str(RUNTIME/'shell.sock'));s.sendall(json.dumps(data).encode());return s.recv(32)
+        except OSError:
+            if not start:return
+            if attempt==0:daemon(['python',str(ROOT/'shell.py')],'shell')
+            time.sleep(.1)
+    raise SystemExit('Mainframe: não foi possível iniciar o painel. Veja '+str(STATE/'shell.log'))
+def lua(code):
+    result=text('hyprctl','eval',code)
+    if 'error' in result.lower():raise RuntimeError(result)
+    return result
+def dispatch(code):return lua('hl.dispatch(hl.dsp.'+code+')')
+def focus():
+    path=RUNTIME/'focus.json'
+    if path.exists():
+        data=json.loads(path.read_text());w=data.get('window')
+        if w and any(x['address']==w['address'] for x in json.loads(text('hyprctl','clients','-j') or '[]')):
+            sel=json.dumps('address:'+w['address'])
+            if w['floating']:
+                dispatch(f'window.resize({{window={sel},x={w["size"][0]},y={w["size"][1]}}})')
+                dispatch(f'window.move({{window={sel},x={w["at"][0]},y={w["at"][1]}}})')
+            else:dispatch(f'window.float({{window={sel}}})')
+        lua('hl.config({general={gaps_out=16,gaps_in=6}})')
+        if data.get('bar'):run('pkill','-USR1','-x','waybar')
+        run('swaync-client','-dn' if data.get('dnd') else '-df');path.unlink()
+    else:
+        message(['hide']);w=json.loads(text('hyprctl','activewindow','-j') or '{}')
+        data={'started':time.time(),'dnd':text('swaync-client','-D')=='true','bar':bool(text('pgrep','-x','waybar')),'window':w if w.get('address') else None}
+        if w.get('address') and not w.get('fullscreen'):
+            sel=json.dumps('address:'+w['address'])
+            if not w["floating"]:dispatch(f'window.float({{window={sel}}})')
+            dispatch(f'window.resize({{window={sel},x=1040,y=850}})');dispatch(f'window.center({{window={sel}}})')
+        path.write_text(json.dumps(data));lua('hl.config({general={gaps_out=60,gaps_in=6}})')
+        if data['bar']:run('pkill','-USR1','-x','waybar')
+        run('swaync-client','-dn')
+def volume(action):
+    if action=='--toggle-mic':run('pamixer','--default-source','-t');return
+    args={'--inc':['-i','5'],'--dec':['-d','5'],'--toggle':['-t']}.get(action)
+    if args:run('pamixer',*args)
+    value=text('pamixer','--get-volume') or '0';muted=text('pamixer','--get-mute')=='true'
+    message(['osd','volume',value,'MUDO' if muted else 'alto-falantes'])
+def brightness(action):
+    if not list(Path('/sys/class/backlight').glob('*')):
+        run('notify-send','Brilho do monitor','Este monitor externo não expõe controle de brilho ao sistema. Use os botões do monitor.');return
+    if action in ('--inc','--dec'):run('brightnessctl','set','5%+' if action=='--inc' else '5%-')
+    value=round(100*int(text('brightnessctl','get'))/max(1,int(text('brightnessctl','max'))));message(['osd','brilho',value,'painel'])
+def clipboard():
+    message(['hide'],False)
+    pinfile=STATE/'clipboard-pins.json'
+    try:pins=json.loads(pinfile.read_text())
+    except (OSError,ValueError):pins=[]
+    while True:
+        rows=text('cliphist','list').splitlines();rows.sort(key=lambda r:0 if r.split('\t')[0] in pins else 1)
+        if not rows:run('notify-send','Área de transferência','Ainda não há itens copiados.');return
+        display=['★ '+r if r.split('\t')[0] in pins else '  '+r for r in rows]
+        res=run('rofi','-dmenu','-p','ÁREA DE TRANSFERÊNCIA','-format','i','-no-custom','-i','-mesg','↵ copiar · alt+d apagar · alt+p fixar · esc fechar','-kb-custom-1','Alt+d','-kb-custom-2','Alt+p','-theme-str','window { width: 760px; } listview { lines: 9; } textbox-footer { str: "↵ copiar · alt+d apagar · alt+p fixar · esc fechar"; }',input='\n'.join(display).encode())
+        try:chosen=rows[int(res.stdout.decode().strip())]
+        except (ValueError,IndexError):return
+        if res.returncode==10:run('cliphist','delete',input=chosen.encode());continue
+        if res.returncode==11:
+            key=chosen.split('\t')[0];pins.remove(key) if key in pins else pins.append(key);pinfile.write_text(json.dumps(pins));continue
+        if res.returncode!=0:return
+        decoded=run('cliphist','decode',input=chosen.encode())
+        if decoded.returncode==0:run('wl-copy',input=decoded.stdout)
+        return
+
+def main():
+    args=sys.argv[1:] or ['dashboard'];cmd=args[0]
+    if cmd=='start':
+        message(['hide'])
+        # Record the previous notification owner once, before changing it.
+        service_state=STATE/'services.json'
+        if not service_state.exists():
+            service_state.write_text(json.dumps({key:text('systemctl','--user',key,'mako.service') for key in ('is-active','is-enabled')}))
+        # SwayNC owns desktop notifications in this theme.
+        run('systemctl','--user','stop','mako.service')
+        run('systemctl','--user','start','swaync.service')
+        for app in ['waybar','swaync']:
+            if not text('pgrep','-x',app):daemon([app],app)
+    elif cmd in ('dashboard','widgets','hide','osd'):message(args,start=cmd!='hide')
+    elif cmd=='stop':
+        message(args,start=False)
+        for _ in range(30):
+            with open(RUNTIME/'shell.lock','w') as lock:
+                try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB);break
+                except BlockingIOError:time.sleep(.1)
+    elif cmd=='launcher':run('rofi','-show','drun','-mesg','↵ abrir · tab trocar modo · esc fechar')
+    elif cmd=='clipboard':clipboard()
+    elif cmd in ('focus','volume','brightness'):
+        with open(RUNTIME/(cmd+'.lock'),'w') as lock:
+            fcntl.flock(lock,fcntl.LOCK_EX)
+            if cmd=='focus':focus()
+            elif cmd=='volume':volume(args[1] if len(args)>1 else '--show')
+            else:brightness(args[1] if len(args)>1 else '--show')
+    elif cmd=='focus-status':print('true' if (RUNTIME/'focus.json').exists() else 'false')
+    else:raise SystemExit('Comando desconhecido: '+cmd)
+if __name__=='__main__':main()

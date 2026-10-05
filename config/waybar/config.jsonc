@@ -1,0 +1,108 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "margin-top": 12,
+  "margin-left": 16,
+  "margin-right": 16,
+  "margin-bottom": 0,
+  "spacing": 0,
+  "modules-left": [
+    "custom/dashboard",
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "mpris",
+    "cpu",
+    "memory",
+    "custom/volume",
+    "network",
+    "custom/notifications",
+    "custom/clock"
+  ],
+  "custom/dashboard": {
+    "format": "LATÃO",
+    "on-click": "~/.config/mainframe/control dashboard",
+    "tooltip-format": "Painel · Super + Tab"
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "I",
+      "2": "II",
+      "3": "III",
+      "4": "IV",
+      "5": "V",
+      "6": "VI",
+      "7": "VII",
+      "8": "VIII",
+      "9": "IX"
+    },
+    "on-click": "activate",
+    "persistent-workspaces": {
+      "*": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 36,
+    "separate-outputs": true
+  },
+  "cpu": {
+    "format": "CPU <span foreground=\"#9EEA8E\">{usage}%</span>",
+    "interval": 3,
+    "states": {
+      "warning": 85
+    }
+  },
+  "memory": {
+    "format": "MEM <span foreground=\"#9EEA8E\">{used:.1f}G</span>",
+    "interval": 5
+  },
+  "custom/volume": {
+    "exec": "~/.config/mainframe/scripts/volume-bar",
+    "return-type": "json",
+    "interval": 1,
+    "on-click": "~/.config/mainframe/control volume --toggle",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "~/.config/mainframe/control volume --inc",
+    "on-scroll-down": "~/.config/mainframe/control volume --dec"
+  },
+  "network": {
+    "format-ethernet": "NET {ifname}",
+    "format-wifi": "NET {essid}",
+    "format-disconnected": "NET desligada",
+    "max-length": 17,
+    "on-click": "nm-connection-editor",
+    "tooltip-format": "{ifname} · {ipaddr}"
+  },
+  "mpris": {
+    "format": "♪ {title}",
+    "format-paused": "Ⅱ {title}",
+    "max-length": 22,
+    "on-click": "playerctl play-pause",
+    "tooltip-format": "{artist} — {title}"
+  },
+  "custom/notifications": {
+    "exec": "swaync-client -swb",
+    "return-type": "json",
+    "format": "◫ {text}",
+    "on-click": "swaync-client -t",
+    "tooltip": false
+  },
+  "custom/clock": {
+    "exec": "~/.config/mainframe/scripts/clock",
+    "return-type": "json",
+    "interval": 1,
+    "on-click": "~/.config/mainframe/control dashboard"
+  }
+}

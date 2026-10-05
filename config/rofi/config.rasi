@@ -1,0 +1,124 @@
+configuration {
+    modi: "drun,run,window";
+    font: "IBM Plex Mono 11";
+    show-icons: false;
+    display-drun: "APLICATIVOS";
+    display-run: "EXECUTAR";
+    display-window: "JANELAS";
+    drun-display-format: "{name}";
+    sidebar-mode: true;
+    kb-mode-next: "Tab,Control+Tab";
+    kb-mode-previous: "ISO_Left_Tab,Control+ISO_Left_Tab";
+    kb-row-tab: "";
+    kb-element-next: "";
+    kb-element-prev: "";
+}
+* {
+    bg: #15130E;
+    fg: #CFC4AA;
+    brass: #B8925A;
+    dim: #6E5836;
+    green: #9EEA8E;
+    copper: #C8743F;
+    background-color: @bg;
+    text-color: @fg;
+    border-radius: 0;
+}
+window {
+    width: 620px;
+    border: 2px;
+    border-color: @brass;
+    location: center;
+    anchor: center;
+}
+mainbox {
+    children: [mode-switcher, inputbar, listview, message];
+    spacing: 0;
+}
+mode-switcher {
+    border: 0 0 1px;
+    border-color: #3A3224;
+}
+button {
+    padding: 11px 14px;
+    text-color: @dim;
+}
+button selected {
+    background-color: @brass;
+    text-color: #0D0C09;
+}
+inputbar {
+    children: [textbox-prompt-colon, entry];
+    padding: 16px 20px;
+    spacing: 12px;
+    border: 0 0 1px;
+    border-color: #3A3224;
+}
+textbox-prompt-colon {
+    str: "▶";
+    text-color: @copper;
+}
+entry {
+    text-color: @green;
+    cursor-color: @green;
+    placeholder: "";
+}
+listview {
+    lines: 7;
+    fixed-height: true;
+    scrollbar: false;
+    spacing: 0;
+    padding: 8px 0;
+}
+element {
+    padding: 9px 20px;
+    spacing: 12px;
+}
+element selected.normal {
+    background-color: @green;
+    text-color: #0D0C09;
+}
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+}
+message {
+    border: 1px 0 0;
+    border-color: #3A3224;
+    padding: 10px 20px;
+}
+textbox {
+    text-color: @dim;
+    font: "IBM Plex Mono 9";
+}
+window {
+    padding: 0;
+    background-color: @bg;
+}
+listview {
+    border: 0;
+}
+element normal.normal, element alternate.normal, element normal.active, element alternate.active {
+    background-color: @bg;
+    text-color: @fg;
+}
+element normal.urgent, element alternate.urgent {
+    background-color: @bg;
+    text-color: #D0553F;
+}
+element selected.active, element selected.urgent {
+    background-color: @green;
+    text-color: #0D0C09;
+}
+mainbox {
+    children: [mode-switcher, inputbar, listview, textbox-footer];
+}
+textbox-footer {
+    expand: false;
+    str: "↵ abrir · tab trocar modo · esc fechar";
+    padding: 10px 20px;
+    border: 1px 0 0;
+    border-color: #3A3224;
+    text-color: @dim;
+    font: "IBM Plex Mono 9";
+}
