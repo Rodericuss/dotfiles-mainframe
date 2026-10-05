@@ -172,7 +172,7 @@ class Shell:
         self.cal_grid=Gtk.Grid(column_spacing=5,row_spacing=5);self.cal_grid.set_column_homogeneous(True);self.cal_grid.set_row_homogeneous(True);add(cal,self.cal_grid,True)
         self.cal_hint=add(cal,label('','muted'));self.render_calendar();bottom.attach(cal,1,0,1,1);add(root,bottom,True)
         footer=box(False,16,'footer');add(footer,label('MAINFRAME LATÃO','heading'),True)
-        for text,cmd in [('APPS','launcher'),('CLIPBOARD','clipboard'),('FOCO · F7','focus')]: add(footer,button(text,lambda c=cmd:(self.hide(),launch(str(ROOT/'control'),c)),'small'))
+        for text,cmd in [('APPS','launcher'),('CLIPBOARD','clipboard'),('FOCO · F8','focus')]: add(footer,button(text,lambda c=cmd:(self.hide(),launch(str(ROOT/'control'),c)),'small'))
         add(footer,button('FECHAR · ESC',self.hide,'small'));add(root,footer)
         self.window('dashboard',root,1100,740)
     def render_calendar(self):
@@ -222,8 +222,8 @@ class Shell:
         self.osd_timeout=GLib.timeout_add(1800,self.hide_osd)
     def hide_osd(self):self.windows['osd'].hide();self.osd_timeout=0;return False
     def make_hud(self):
-        row=box(False,12,'focus-hud');add(row,label('FOCO','focus-tag'));self.hud_time=add(row,label('00:00','green'));add(row,button('SAIR · F7',lambda:launch(str(ROOT/'control'),'focus'),'small'))
-        self.window('hud',row,280,-1,(GtkLayerShell.Edge.BOTTOM,GtkLayerShell.Edge.RIGHT),False)
+        row=box(False,12,'focus-hud');add(row,label('FOCO','focus-tag'));self.hud_time=add(row,label('00:00','green'));add(row,button('SAIR · F8',lambda:launch(str(ROOT/'control'),'focus'),'small'))
+        self.window('hud',row,-1,-1,(GtkLayerShell.Edge.BOTTOM,GtkLayerShell.Edge.RIGHT),False)
     def poll(self):
         previous=None
         while True:
