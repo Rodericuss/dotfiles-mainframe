@@ -12,7 +12,7 @@ hl.window_rule({ match = { class = "^(herdr-special)$" }, opacity = "1.0 overrid
 hl.bind("SUPER + TAB", hl.dsp.exec_cmd("~/.config/mainframe/control dashboard"))
 hl.bind("SUPER + T", hl.dsp.exec_cmd("~/.config/mainframe/control dashboard"))
 hl.bind("SUPER + N", hl.dsp.exec_cmd("swaync-client --toggle-panel"))
-hl.bind("SUPER + ALT + F", hl.dsp.exec_cmd("~/.config/mainframe/control focus"))
+hl.bind("F8", hl.dsp.exec_cmd("~/.config/mainframe/control focus"))
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("~/.config/mainframe/control brightness --inc"))
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("~/.config/mainframe/control brightness --dec"))
 
@@ -22,7 +22,7 @@ hl.on("hyprland.start", function()
 end)
 
 -- F7: with a normal/focus pair (hypr_config1/2.lua) it swaps them; otherwise the
--- theme's window focus mode (also on Super+Alt+F).
+-- theme's window focus mode (also on F8).
 local swap = os.getenv("HOME") .. "/.config/neobrutal/scripts/focus"
 local pair = io.open(os.getenv("HOME") .. "/.config/hypr/hypr_config2.lua", "r")
 if pair then pair:close() end

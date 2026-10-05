@@ -50,7 +50,7 @@ if old:
  if '-- Mainframe Latão: the final visual settings' in old:old=old[:old.index('-- Mainframe Latão: the final visual settings')]
  old=re.sub(r'-- BEGIN MAINFRAME INTEGRATION.*?-- END MAINFRAME INTEGRATION\n?', '', old,flags=re.S)
  # These shortcuts are intentionally supplied by the theme, not registered twice.
- old='\n'.join(line for line in old.splitlines() if not (line.strip().startswith('hl.bind(') and any(x in line for x in ['"SUPER + TAB"','"SUPER + T"','"SUPER + N"','"SUPER + ALT + F"','"XF86MonBrightnessUp"','"XF86MonBrightnessDown"','"XF86AudioRaiseVolume"','"XF86AudioLowerVolume"','"XF86AudioMute"','"XF86AudioMicMute"','"F7"','"SUPER + SPACE"','"SUPER + O"','mainMod .. " + SPACE"','mainMod .. " + O"'])))
+ old='\n'.join(line for line in old.splitlines() if not (line.strip().startswith('hl.bind(') and any(x in line for x in ['"SUPER + TAB"','"SUPER + T"','"SUPER + N"','"SUPER + ALT + F"','"F8"','"XF86MonBrightnessUp"','"XF86MonBrightnessDown"','"XF86AudioRaiseVolume"','"XF86AudioLowerVolume"','"XF86AudioMute"','"XF86AudioMicMute"','"F7"','"SUPER + SPACE"','"SUPER + O"','mainMod .. " + SPACE"','mainMod .. " + O"'])))
  old='\n'.join(line for line in old.splitlines() if 'hl.exec_cmd("~/.config/mainframe/control start")' not in line and 'hl.exec_cmd("~/.config/neobrutal/control start")' not in line)
  old+='\n-- BEGIN MAINFRAME INTEGRATION\ndofile(os.getenv("HOME") .. "/.config/hypr/mainframe.lua")\n-- END MAINFRAME INTEGRATION\n'
  write(hypr,old.encode())

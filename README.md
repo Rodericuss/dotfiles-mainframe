@@ -90,7 +90,8 @@ The installer backs up every managed file before its first replacement. Reapplyi
 | `Super + Space` | Application launcher |
 | `Super + O` | Clipboard history |
 | `Super + N` | Notification center |
-| `F7` / `Super + Alt + F` | Desktop focus mode |
+| `F7` | Swap `hypr_config1.lua`/`hypr_config2.lua` when present; otherwise window focus mode |
+| `F8` | Window focus mode (floats and centers the active window, hides the bar, DND) |
 | Media volume keys | Volume and instrument OSD |
 | `:MainframeFocus` / `<leader>uz` | Neovim focus mode |
 
