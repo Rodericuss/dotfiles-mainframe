@@ -35,7 +35,7 @@ Lualine's theme is available as `mainframe`. Neo-tree in the screenshots belongs
 
 The installer enables user stylesheets and adds managed blocks to `userChrome.css`, `userContent.css` and `user.js`. If Sidebery is installed, its profile-specific extension UUID is detected and its UI is themed. Without Sidebery, native tabs remain visible. It sets a local Mainframe home page and session restoration at startup.
 
-The dashboard also serves the same static page at `http://127.0.0.1:47831/`. This server binds only to loopback and serves only the home page; it does not expose the filesystem or task state. For a themed **new tab**, install [New Tab Override](https://addons.mozilla.org/firefox/addon/new-tab-override/) and set its custom URL to that address. The extension is optional and is not bundled or installed by `apply.sh`. It was configured on the reference workstation.
+The dashboard also serves the same static page at `http://127.0.0.1:47831/`. This server binds only to loopback and serves only the home page; it does not expose the filesystem or task state. For a themed **new tab**, install [New Tab Override](https://addons.mozilla.org/firefox/addon/new-tab-override/) and set its custom URL to that address. The extension is optional and is not bundled or installed by `apply.sh`. With **Tridactyl**, which replaces the new tab page itself, use `:set newtab http://127.0.0.1:47831/` instead (and `:set newtabfocus page` so the search box, not the URL bar, gets focus). Extensions cannot open the `file://` copy as a new tab. It was configured on the reference workstation.
 
 ## Rollback
 
