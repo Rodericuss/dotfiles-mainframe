@@ -10,9 +10,9 @@ On Arch, install missing packages using your normal package workflow. Package in
 
 ## Apply
 
-Run `./apply.sh --dry-run` to see every destination, then `./apply.sh`. The script copies theme files, installs the bundled fonts, merges a final Lua overlay into an existing `~/.config/hypr/hyprland.lua`, and appends a Kitty include. Existing application theme files such as Rofi, Waybar and Yazi are replaced after backup. It also updates Firefox profiles that contain `prefs.js`.
+Run `./apply.sh --dry-run` to see every destination, then `./apply.sh`. The script copies theme files, installs the bundled fonts, merges a final Lua overlay into an existing `~/.config/hypr/hyprland.lua`, and appends a Kitty include. Existing application theme files such as Rofi, Waybar and Yazi are replaced after backup. It also updates Firefox profiles that contain `prefs.js`, under both `~/.mozilla/firefox` and the XDG location `~/.config/mozilla/firefox`.
 
-`./activate.sh` rebuilds font and Bat caches, reloads Hyprland, restarts the panel, Waybar and Hyprpaper, and starts SwayNC as the notification owner. It stops Mako for this session. It does not change service enablement. Reopen terminal applications to load their new themes and restart Firefox for its CSS.
+`./activate.sh` rebuilds font and Bat caches, reloads Hyprland, restarts the panel, Waybar and Hyprpaper, and restarts SwayNC as the notification owner (a restart, not a reload: a SwayNC daemon started before `~/.config/swaync/config.json` existed keeps the default widgets on reload). It stops Mako for this session. It does not change service enablement. Reopen terminal applications to load their new themes and restart Firefox for its CSS.
 
 The panel starts with Hyprland through the Lua overlay. Logs and user data are under `~/.local/state/mainframe/`; the local control socket is under `$XDG_RUNTIME_DIR/mainframe-$UID/`.
 
@@ -52,4 +52,5 @@ Firefox persists values from `user.js` into `prefs.js`. Restoring `user.js` does
 - Media controls display real playerctl data. With no player, the card explicitly shows an idle state. Calendar navigation does not imply calendar-provider integration.
 - External-monitor brightness requires hardware support; unsupported screens receive an explanatory notification rather than a fabricated gauge value.
 - Herdr is themed through its supported configuration tokens; its internal layout remains controlled by Herdr.
+- Two focus modes: **F8** floats and centers the active window, hides the bar and enables DND. **F7** swaps `~/.config/hypr/hypr_config1.lua` (normal) and `hypr_config2.lua` (focus) over `hyprland.lua` via `~/.config/neobrutal/scripts/focus` when that pair exists; otherwise F7 also runs the F8 mode. Each file in the pair must end with the Mainframe integration block (`dofile` of `mainframe.lua`), and the focus file needs its no-gaps override after that block, or the theme disappears or overrides it on swap. `apply.sh` only rewrites `hyprland.lua`.
 - Focus mode restores geometry, DND and bar visibility under ordinary use. Avoid manually toggling Waybar while focus mode is active.

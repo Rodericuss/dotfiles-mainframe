@@ -8,7 +8,7 @@
 
 **A brass-and-phosphor desktop for deliberate work.**
 
-Mainframe Latão brings the visual language of analog instruments to a modern Hyprland desktop: near-black panels, fine brass rules, copper controls and luminous green selections. Compact floating windows leave room for the wallpaper and for your attention.
+Mainframe Latão brings the visual language of analog instruments to a modern Hyprland desktop: near-black panels, fine brass rules, copper controls and luminous green selections. Windows tile with fine gaps that leave room for the wallpaper and for your attention; only the Yazi scratchpad floats.
 
 ![Mainframe dashboard](docs/images/dashboard.png)
 
@@ -20,7 +20,7 @@ Designed from the supplied Mainframe HTML and screenshot references, then implem
 
 | Surface | Included behavior |
 | --- | --- |
-| Hyprland / Hyprpaper | Sharp borders, opaque surfaces, compact floating defaults, instrument wallpaper |
+| Hyprland / Hyprpaper | Sharp borders, opaque surfaces, tiled windows with a floating Yazi scratchpad, instrument wallpaper |
 | Waybar | Roman workspaces, live CPU/RAM, segmented volume, network and clock |
 | Dashboard | Live clock and system readings, persistent tasks, Pomodoro timer, calendar, playerctl media controls |
 | Focus mode | Centered work window, hidden bar, do-not-disturb, elapsed-time HUD, geometry restoration |
@@ -68,7 +68,7 @@ Designed from the supplied Mainframe HTML and screenshot references, then implem
 
 IBM Plex Mono and IBM Plex Sans Condensed are bundled under the SIL Open Font License. Two-pixel outlines, square corners and opaque backgrounds keep the interface crisp.
 
-The reference workstation is a **32-inch display at 1920 × 1080, scale 1**. Terminal defaults are 1000 × 650, Firefox 1280 × 820, and special terminal windows 1160 × 740. Physical screen size alone does not determine UI scale; adjust these logical-pixel sizes for other resolutions and scale factors.
+The reference workstation is a **32-inch display at 1920 × 1080, scale 1**. Applications tile; the floating Yazi scratchpad is 1160 × 740. Physical screen size alone does not determine UI scale; adjust these logical-pixel sizes for other resolutions and scale factors.
 
 ## Quick start
 

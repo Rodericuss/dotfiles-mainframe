@@ -21,3 +21,11 @@ class InstallTests(unittest.TestCase):
    self.assertIn(str(home), (home/'.config/hypr/hyprpaper.conf').read_text())
    apply('--restore')
    self.assertEqual(rofi.read_text(),'original\n');self.assertNotIn('MAINFRAME INTEGRATION',hypr.read_text());self.assertFalse((home/'.config/mainframe/shell.py').exists())
+ def test_themes_firefox_profiles_in_legacy_and_xdg_locations(self):
+  with tempfile.TemporaryDirectory() as folder:
+   home=Path(folder)
+   for root in ('.mozilla/firefox','.config/mozilla/firefox'):
+    profile=home/root/'abc.default-release';profile.mkdir(parents=True);(profile/'prefs.js').write_text('')
+   subprocess.run(['python',str(ROOT/'scripts/install.py'),'--home',folder],check=True,stdout=subprocess.DEVNULL)
+   for root in ('.mozilla/firefox','.config/mozilla/firefox'):
+    self.assertIn('BEGIN MAINFRAME FIREFOX',(home/root/'abc.default-release/chrome/userChrome.css').read_text())
