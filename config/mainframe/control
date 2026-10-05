@@ -25,29 +25,24 @@ def lua(code):
     if 'error' in result.lower():raise RuntimeError(result)
     return result
 def dispatch(code):return lua('hl.dispatch(hl.dsp.'+code+')')
+# Focus mode keeps every window tiled and only widens the gaps; the bottom gap
+# is taller so the HUD sits in its own strip without covering a window.
+FOCUS_GAPS='{top=60,right=60,bottom=96,left=60}'
 def focus():
     path=RUNTIME/'focus.json'
     if path.exists():
-        data=json.loads(path.read_text());w=data.get('window')
-        if w and any(x['address']==w['address'] for x in json.loads(text('hyprctl','clients','-j') or '[]')):
-            sel=json.dumps('address:'+w['address'])
-            if w['floating']:
-                dispatch(f'window.resize({{window={sel},x={w["size"][0]},y={w["size"][1]}}})')
-                dispatch(f'window.move({{window={sel},x={w["at"][0]},y={w["at"][1]}}})')
-            else:dispatch(f'window.float({{window={sel}}})')
+        data=json.loads(path.read_text())
         lua('hl.config({general={gaps_out=16,gaps_in=6}})')
         if data.get('bar'):run('pkill','-USR1','-x','waybar')
         run('swaync-client','-dn' if data.get('dnd') else '-df');path.unlink()
     else:
-        message(['hide']);w=json.loads(text('hyprctl','activewindow','-j') or '{}')
-        data={'started':time.time(),'dnd':text('swaync-client','-D')=='true','bar':bool(text('pgrep','-x','waybar')),'window':w if w.get('address') else None}
-        if w.get('address') and not w.get('fullscreen'):
-            sel=json.dumps('address:'+w['address'])
-            if not w["floating"]:dispatch(f'window.float({{window={sel}}})')
-            dispatch(f'window.resize({{window={sel},x=1040,y=850}})');dispatch(f'window.center({{window={sel}}})')
-        path.write_text(json.dumps(data));lua('hl.config({general={gaps_out=60,gaps_in=6}})')
+        message(['hide'])
+        data={'started':time.time(),'dnd':text('swaync-client','-D')=='true','bar':bool(text('pgrep','-x','waybar'))}
+        path.write_text(json.dumps(data));lua('hl.config({general={gaps_out='+FOCUS_GAPS+',gaps_in=6}})')
         if data['bar']:run('pkill','-USR1','-x','waybar')
         run('swaync-client','-dn')
+    try:lua('mainframe_place_yazi(true)')
+    except RuntimeError:pass
 def volume(action):
     if action=='--toggle-mic':run('pamixer','--default-source','-t');return
     args={'--inc':['-i','5'],'--dec':['-d','5'],'--toggle':['-t']}.get(action)

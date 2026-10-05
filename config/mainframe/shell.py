@@ -108,13 +108,13 @@ class Shell:
             def log_message(self,*args):pass
         try:http.server.ThreadingHTTPServer(('127.0.0.1',47831),HomeHandler).serve_forever()
         except OSError as e:print('Local home page:',e,flush=True)
-    def window(self,name,content,width,height=-1,edges=(),keyboard=True):
+    def window(self,name,content,width,height=-1,edges=(),keyboard=True,margins=None):
         w=Gtk.Window(title='Mainframe · '+name);w.set_default_size(width,height);w.set_resizable(False)
         GtkLayerShell.init_for_window(w);GtkLayerShell.set_namespace(w,'mainframe-'+name)
         GtkLayerShell.set_layer(w,GtkLayerShell.Layer.OVERLAY)
         GtkLayerShell.set_keyboard_mode(w,GtkLayerShell.KeyboardMode.ON_DEMAND if keyboard else GtkLayerShell.KeyboardMode.NONE)
         for edge in edges:
-            GtkLayerShell.set_anchor(w,edge,True);GtkLayerShell.set_margin(w,edge,24)
+            GtkLayerShell.set_anchor(w,edge,True);GtkLayerShell.set_margin(w,edge,(margins or {}).get(edge,24))
         w.add(content);w.connect('key-press-event',lambda _,e:self.hide() if e.keyval==Gdk.KEY_Escape else False)
         self.windows[name]=w;w.show_all();w.hide();return w
     def hide(self):
@@ -223,7 +223,9 @@ class Shell:
     def hide_osd(self):self.windows['osd'].hide();self.osd_timeout=0;return False
     def make_hud(self):
         row=box(False,12,'focus-hud');add(row,label('FOCO','focus-tag'));self.hud_time=add(row,label('00:00','green'));add(row,button('SAIR · F8',lambda:launch(str(ROOT/'control'),'focus'),'small'))
-        self.window('hud',row,-1,-1,(GtkLayerShell.Edge.BOTTOM,GtkLayerShell.Edge.RIGHT),False)
+        # Focus gaps are 60 with a 96 bottom strip (see control): align with the windows'
+        # right edge and center the ~36px HUD in that strip, clear of the screen corner.
+        self.window('hud',row,-1,-1,(GtkLayerShell.Edge.BOTTOM,GtkLayerShell.Edge.RIGHT),False,{GtkLayerShell.Edge.BOTTOM:30,GtkLayerShell.Edge.RIGHT:60})
     def poll(self):
         previous=None
         while True:

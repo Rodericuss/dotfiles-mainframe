@@ -23,7 +23,7 @@ Designed from the supplied Mainframe HTML and screenshot references, then implem
 | Hyprland / Hyprpaper | Sharp borders, opaque surfaces, tiled windows with a floating Yazi scratchpad, instrument wallpaper |
 | Waybar | Roman workspaces, live CPU/RAM, segmented volume, network and clock |
 | Dashboard | Live clock and system readings, persistent tasks, Pomodoro timer, calendar, playerctl media controls |
-| Focus mode | Centered work window, hidden bar, do-not-disturb, elapsed-time HUD, geometry restoration |
+| Focus mode | Tiled windows with wide gaps, hidden bar, do-not-disturb, elapsed-time HUD, Yazi parked top-left |
 | Rofi / clipboard | Application modes, searchable clipboard, pin/delete/copy actions |
 | SwayNC | Compact notification center, volume, focus and mute controls |
 | Kitty / Fish / Starship | IBM Plex Mono, block cursor, coordinated shell and prompt |
@@ -91,7 +91,7 @@ The installer backs up every managed file before its first replacement. Reapplyi
 | `Super + O` | Clipboard history |
 | `Super + N` | Notification center |
 | `F7` | Swap `hypr_config1.lua`/`hypr_config2.lua` when present; otherwise window focus mode |
-| `F8` | Window focus mode (floats and centers the active window, hides the bar, DND) |
+| `F8` | Focus mode: windows stay tiled with wide gaps, bar hidden, DND, elapsed-time HUD; the Yazi scratchpad parks top-left |
 | Media volume keys | Volume and instrument OSD |
 | `:MainframeFocus` / `<leader>uz` | Neovim focus mode |
 
@@ -106,7 +106,7 @@ See the rollback notes for browser preferences and the optional new-tab extensio
 
 Tested in the actual Wayland session with Hyprland 0.56.2, Kitty 0.48.2, Rofi 2.0.0, Waybar 0.15.0, SwayNC 0.12.6 and Yazi 26.9.1. Screenshots are real `grim` captures; dashboard tasks are isolated sample data. No personal browser tabs or conversations are included.
 
-Automated checks cover installer dry-run, repeated application, backup restoration, task persistence, timer completion and calendar boundaries. Live checks cover compositor configuration, Yazi startup, focus round-trips for tiled and floating windows, volume display and Firefox new-tab routing.
+Automated checks cover installer dry-run, repeated application, backup restoration, task persistence, timer completion and calendar boundaries. Live checks cover compositor configuration, Yazi startup, focus round-trips with tiled windows and the Yazi scratchpad, volume display and Firefox new-tab routing.
 
 ```sh
 python -m unittest discover -s tests -v
