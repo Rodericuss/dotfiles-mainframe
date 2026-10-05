@@ -10,7 +10,7 @@ switch_tab = "prefix+1..9"
 
 # Nice extras
 new_workspace = "prefix+shift+n"
-workspace_picker = ["prefix+w", "prefix+t"]
+workspace_picker = ["prefix+w", "prefix+a"]
 
 new_tab = "prefix+c"
 previous_tab = "prefix+p"
@@ -23,6 +23,7 @@ help = "prefix+?"
 [ui]
 agent_panel_sort = "spaces"
 show_agent_labels_on_pane_borders = true
+prompt_new_workspace_name = true
 
 [theme]
 name = "catppuccin"
