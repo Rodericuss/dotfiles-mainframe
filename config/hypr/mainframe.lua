@@ -6,9 +6,7 @@ hl.config({
  decoration = { rounding = 0, active_opacity = 1.0, inactive_opacity = 1.0,
    blur = { enabled = false }, shadow = { enabled = false } }
 })
--- Compact floating defaults; Super+V still toggles tiling.
-hl.window_rule({ match = { class = "^(kitty|neovide)$" }, float = true, size = "1000 650", center = true, opacity = "1.0 override" })
-hl.window_rule({ match = { class = "^(firefox)$" }, float = true, size = "1280 820", center = true })
+-- Floating only for the special Herdr/Yazi windows; Super+V toggles tiling.
 hl.window_rule({ match = { class = "^(herdr-special|yazi-special|yazi-toggle)$" }, float = true, size = "1160 740", center = true, opacity = "1.0 override" })
 hl.bind("SUPER + TAB", hl.dsp.exec_cmd("~/.config/mainframe/control dashboard"))
 hl.bind("SUPER + T", hl.dsp.exec_cmd("~/.config/mainframe/control dashboard"))
