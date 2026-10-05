@@ -1,5 +1,11 @@
 # Mainframe Latão
 
+![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?style=flat-square&logo=archlinux&logoColor=white)
+![Hyprland](https://img.shields.io/badge/Hyprland-58E1FF?style=flat-square&logo=hyprland&logoColor=black)
+![Neovim](https://img.shields.io/badge/Neovim-57A143?style=flat-square&logo=neovim&logoColor=white)
+![Fish](https://img.shields.io/badge/Fish_Shell-4AAE46?style=flat-square&logo=fishshell&logoColor=white)
+![License](https://img.shields.io/badge/License-OFL_·_MIT-B8925A?style=flat-square)
+
 **A brass-and-phosphor desktop for deliberate work.**
 
 Mainframe Latão brings the visual language of analog instruments to a modern Hyprland desktop: near-black panels, fine brass rules, copper controls and luminous green selections. Compact floating windows leave room for the wallpaper and for your attention.
@@ -8,9 +14,7 @@ Mainframe Latão brings the visual language of analog instruments to a modern Hy
 
 Designed from the supplied Mainframe HTML and screenshot references, then implemented and checked in a running Arch Linux session. The desktop keeps its Portuguese labels; this project presentation is in English.
 
-[Open the presentation](docs/PRESENTATION.md) · [Installation and rollback](docs/INSTALL.md) · [Interactive slide deck](docs/presentation.html)
-
-Download or clone the repository and open `docs/presentation.html` in a browser for the slide deck. GitHub displays its source rather than hosting it.
+[Installation and rollback](docs/INSTALL.md)
 
 ## The desktop
 
@@ -46,6 +50,10 @@ Download or clone the repository and open `docs/presentation.html` in a browser 
 | --- | --- |
 | ![Rofi](docs/images/launcher.png) | ![Focus mode](docs/images/focus.png) |
 
+### Volume OSD
+
+![Volume instrument OSD](docs/images/volume.png)
+
 ## Design language
 
 | Token | Value | Role |
@@ -67,8 +75,8 @@ The reference workstation is a **32-inch display at 1920 × 1080, scale 1**. Ter
 This is a theme overlay for an existing Arch/Hyprland Lua desktop. It does not provision a fresh OS or install application packages. Read the [requirements and integration notes](docs/INSTALL.md) first.
 
 ```sh
-git clone https://github.com/Rodericuss/mainframe-latao.git
-cd mainframe-latao
+git clone https://github.com/Rodericuss/dotfiles-mainframe.git
+cd dotfiles-mainframe
 ./apply.sh --dry-run
 ./apply.sh
 ./activate.sh
