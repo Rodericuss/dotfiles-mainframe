@@ -60,7 +60,7 @@ for name,command in [('control','"$@"')]:
  write(home/'.config/neobrutal'/name,b'#!/usr/bin/env bash\nexec "$HOME/.config/mainframe/control" "$@"\n',0o755)
 write(home/'scripts/f1_hypr_conf.sh',b'#!/usr/bin/env bash\nexec "$HOME/.config/mainframe/control" focus\n',0o755)
 # Match installed profiles, including Firefox profile groups absent in profiles.ini.
-for profile in sorted((home/'.mozilla/firefox').glob('*')):
+for profile in sorted(p for root in ('.mozilla/firefox','.config/mozilla/firefox') for p in (home/root).glob('*')):
  prefs=profile/'prefs.js'
  if not profile.is_dir() or not prefs.exists():continue
  uuid=None
