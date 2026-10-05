@@ -1,78 +1,69 @@
-# Mainframe Latão
+<p align="center">
+  <img src="docs/images/wordmark.svg" alt="Mainframe Latão — a brass-and-phosphor desktop" width="100%">
+</p>
 
-![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?style=flat-square&logo=archlinux&logoColor=white)
-![Hyprland](https://img.shields.io/badge/Hyprland-58E1FF?style=flat-square&logo=hyprland&logoColor=black)
-![Neovim](https://img.shields.io/badge/Neovim-57A143?style=flat-square&logo=neovim&logoColor=white)
-![Fish](https://img.shields.io/badge/Fish_Shell-4AAE46?style=flat-square&logo=fishshell&logoColor=white)
-![License](https://img.shields.io/badge/License-OFL_·_MIT-B8925A?style=flat-square)
+<p align="center">
+  <a href="#the-desktop">Explore</a> · <a href="#the-system">Design system</a> · <a href="#get-started">Get started</a> · <a href="docs/PRESENTATION.md">Theme presentation</a> · <a href="docs/presentation.html">Slide deck</a> · <a href="docs/INSTALL.md">Installation guide</a>
+</p>
 
-**A brass-and-phosphor desktop for deliberate work.**
+<p align="center">
+  <img alt="Arch Linux" src="https://img.shields.io/badge/Arch_Linux-0D0C09?style=flat-square&logo=archlinux&logoColor=B8925A">
+  <img alt="Hyprland" src="https://img.shields.io/badge/Hyprland-0D0C09?style=flat-square&logoColor=9EEA8E">
+  <img alt="Yazi" src="https://img.shields.io/badge/Yazi-0D0C09?style=flat-square&logoColor=C8743F">
+  <img alt="IBM Plex" src="https://img.shields.io/badge/IBM_Plex-0D0C09?style=flat-square&logo=ibm&logoColor=CFC4AA">
+</p>
 
-Mainframe Latão brings the visual language of analog instruments to a modern Hyprland desktop: near-black panels, fine brass rules, copper controls and luminous green selections. Windows tile with fine gaps that leave room for the wallpaper and for your attention; only the Yazi scratchpad floats.
+> **Mainframe Latão** turns a Hyprland workstation into a quiet instrument panel: near-black canvas, fine brass lines, copper controls, and phosphor-green signals. It was built from the supplied HTML and PNG references and tuned on a 32-inch, 1920 × 1080 display.
 
-![Mainframe dashboard](docs/images/dashboard.png)
-
-Designed from the supplied Mainframe HTML and screenshot references, then implemented and checked in a running Arch Linux session. The desktop keeps its Portuguese labels; this project presentation is in English.
-
-[Installation and rollback](docs/INSTALL.md)
+<p align="center">
+  <a href="docs/images/dashboard.png"><img src="docs/images/dashboard.png" alt="Mainframe dashboard with clock, timer, media, tasks and calendar" width="960"></a>
+  <br><sub>01 / The dashboard — real clock and metrics, persistent tasks and timer, media controls, calendar. Sample tasks appear only in this preview.</sub>
+</p>
 
 ## The desktop
 
-| Surface | Included behavior |
-| --- | --- |
-| Hyprland / Hyprpaper | Sharp borders, opaque surfaces, tiled windows with a floating Yazi scratchpad, instrument wallpaper |
-| Waybar | Roman workspaces, live CPU/RAM, segmented volume, network and clock |
-| Dashboard | Live clock and system readings, persistent tasks, Pomodoro timer, calendar, playerctl media controls |
-| Focus mode | Tiled windows with wide gaps, hidden bar, do-not-disturb, elapsed-time HUD, Yazi parked top-left |
-| Rofi / clipboard | Application modes, searchable clipboard, pin/delete/copy actions |
-| SwayNC | Compact notification center, volume, focus and mute controls |
-| Kitty / Fish / Starship | IBM Plex Mono, block cursor, coordinated shell and prompt |
-| Neovim | Native colorscheme, rectangular buffer tabs, Lualine integration, editor focus mode |
-| **Yazi** | Phosphor selection, brass directories, copper search, square status line and themed code previews |
-| Firefox / Sidebery | Brass browser chrome, vertical tabs, local clock/search home page |
-| Herdr / Bat / Btop / GTK 3 | Matching application colors, syntax previews, system monitor and widgets |
+The theme carries one visual language across the whole session. Regular applications **tile with fine gaps**. The Yazi scratchpad floats at a compact 1160 × 740 logical pixels, leaving the wallpaper visible on the reference display.
 
-### File navigation
+<table>
+<tr><th align="left">Surface</th><th align="left">What it does</th></tr>
+<tr><td>Hyprland + Hyprpaper</td><td>Sharp borders, opaque windows, instrument wallpaper, two focus workflows.</td></tr>
+<tr><td>Waybar + dashboard</td><td>Roman workspaces; live CPU, memory, network, volume and clock; a task, timer, media and calendar panel.</td></tr>
+<tr><td>Rofi + clipboard</td><td>Application launcher and searchable history with copy, pin and delete actions.</td></tr>
+<tr><td>SwayNC</td><td>Compact notifications, volume, mute and focus controls.</td></tr>
+<tr><td>Kitty + Fish + Starship</td><td>IBM Plex typography, block cursor, coordinated terminal and prompt.</td></tr>
+<tr><td>Neovim + Yazi</td><td>Editor colors, tabs and Lualine; phosphor selection, brass directories and code previews in the file manager.</td></tr>
+<tr><td>Firefox + Sidebery</td><td>Brass browser chrome, vertical tabs and a local clock/search page.</td></tr>
+<tr><td>Herdr + Bat + Btop + GTK 3</td><td>Matching application colors and controls.</td></tr>
+</table>
 
-![Yazi with Mainframe theme](docs/images/yazi.png)
+### A tour in screenshots
 
-### Editing
+<table>
+<tr><td width="50%"><a href="docs/images/yazi.png"><img src="docs/images/yazi.png" alt="Yazi file manager with Mainframe colors"></a><br><b>02 / Files.</b> Yazi uses the full palette, including selected rows, status and preview syntax.</td><td width="50%"><a href="docs/images/neovim.png"><img src="docs/images/neovim.png" alt="Neovim with Mainframe colors and Neo-tree"></a><br><b>03 / Code.</b> A quiet editor surface with rectangular buffer tabs.</td></tr>
+<tr><td><a href="docs/images/firefox.png"><img src="docs/images/firefox.png" alt="Firefox with Sidebery and Mainframe start page"></a><br><b>04 / Browse.</b> A local clock and search page framed by the browser theme.</td><td><a href="docs/images/launcher.png"><img src="docs/images/launcher.png" alt="Rofi application launcher"></a><br><b>05 / Launch.</b> Compact keyboard-first application access.</td></tr>
+</table>
 
-![Neovim with Mainframe theme](docs/images/neovim.png)
+[Read the screenshot narrative →](docs/PRESENTATION.md) · [Get the interactive slide deck →](docs/presentation.html)
 
-### Browser
+To view the interactive deck, clone or download this repository and open `docs/presentation.html` in a browser. Use the arrow keys to advance and **F** for fullscreen.
 
-![Firefox and Sidebery](docs/images/firefox.png)
+## The system
 
-### Launch and focus
-
-| Launcher | Focus mode |
-| --- | --- |
-| ![Rofi](docs/images/launcher.png) | ![Focus mode](docs/images/focus.png) |
-
-### Volume OSD
-
-![Volume instrument OSD](docs/images/volume.png)
-
-## Design language
-
-| Token | Value | Role |
-| --- | --- | --- |
-| Near black | `#0D0C09` | Desktop and terminal canvas |
+| Pigment | Hex | Role |
+| :--- | :--- | :--- |
+| Canvas | `#0D0C09` | Almost-black desktop and terminal |
 | Panel | `#15130E` | Cards and controls |
-| Brass | `#B8925A` | Borders, labels and structure |
-| Copper | `#C8743F` | Active window and actions |
+| Brass | `#B8925A` | Rules, labels and structure |
+| Copper | `#C8743F` | Active border and primary actions |
 | Phosphor | `#9EEA8E` | Selection, clock and live values |
 | Parchment | `#E9DFC8` | Primary text |
 | Patina | `#5BA89B` | Media and secondary information |
 
-IBM Plex Mono and IBM Plex Sans Condensed are bundled under the SIL Open Font License. Two-pixel outlines, square corners and opaque backgrounds keep the interface crisp.
+IBM Plex Mono and IBM Plex Sans Condensed give the interface its measured rhythm. Square corners, two-pixel borders and opaque surfaces keep the reference artwork crisp. Physical monitor size does not set UI scale: the layout was tuned at **1920 × 1080, scale 1** and may need size adjustments at other logical resolutions.
 
-The reference workstation is a **32-inch display at 1920 × 1080, scale 1**. Applications tile; the floating Yazi scratchpad is 1160 × 740. Physical screen size alone does not determine UI scale; adjust these logical-pixel sizes for other resolutions and scale factors.
+## Get started
 
-## Quick start
-
-This is a theme overlay for an existing Arch/Hyprland Lua desktop. It does not provision a fresh OS or install application packages. Read the [requirements and integration notes](docs/INSTALL.md) first.
+This is an **overlay for an existing Arch/Hyprland Lua desktop**. It preserves the machine's monitor and input setup while backing up every managed file. Review [requirements and integration details](docs/INSTALL.md) before applying it.
 
 ```sh
 git clone https://github.com/Rodericuss/dotfiles-mainframe.git
@@ -82,38 +73,32 @@ cd dotfiles-mainframe
 ./activate.sh
 ```
 
-The installer backs up every managed file before its first replacement. Reapplying preserves that original backup. Existing Hyprland hardware configuration and Kitty keymaps are retained; theme-owned application configuration files are replaced.
-
-| Shortcut | Action |
-| --- | --- |
-| `Super + Tab` / `Super + T` | Dashboard |
-| `Super + Space` | Application launcher |
-| `Super + O` | Clipboard history |
-| `Super + N` | Notification center |
-| `F7` | Swap `hypr_config1.lua`/`hypr_config2.lua` when present; otherwise window focus mode |
-| `F8` | Focus mode: windows stay tiled with wide gaps, bar hidden, DND, elapsed-time HUD; the Yazi scratchpad parks top-left |
-| Media volume keys | Volume and instrument OSD |
-| `:MainframeFocus` / `<leader>uz` | Neovim focus mode |
+Reapplying retains the backup from the first installation. To inspect or perform a rollback:
 
 ```sh
 ./restore.sh --dry-run
 ./restore.sh
 ```
 
-See the rollback notes for browser preferences and the optional new-tab extension.
+| Key | Action |
+| :--- | :--- |
+| `Super + Tab` or `Super + T` | Dashboard |
+| `Super + Space` | Application launcher |
+| `Super + O` | Clipboard history |
+| `Super + N` | Notification center |
+| `F8` | Window focus: wider gaps, bar hidden, DND and elapsed HUD; Yazi moves into the top-left gap |
+| `F7` | Swap the local normal/focus Hyprland config pair, when installed; otherwise use F8 behavior |
+| Volume media keys | Change volume and show the instrument OSD |
+| `:MainframeFocus` or `<leader>uz` | Neovim focus mode |
 
-## Validation
+## Built and checked on a real desktop
 
-Tested in the actual Wayland session with Hyprland 0.56.2, Kitty 0.48.2, Rofi 2.0.0, Waybar 0.15.0, SwayNC 0.12.6 and Yazi 26.9.1. Screenshots are real `grim` captures; dashboard tasks are isolated sample data. No personal browser tabs or conversations are included.
-
-Automated checks cover installer dry-run, repeated application, backup restoration, task persistence, timer completion and calendar boundaries. Live checks cover compositor configuration, Yazi startup, focus round-trips with tiled windows and the Yazi scratchpad, volume display and Firefox new-tab routing.
+The screenshots are `grim` captures from a running Wayland session. The dashboard screenshot uses isolated sample tasks; personal browser tabs and conversations are excluded. The application versions checked were Hyprland 0.56.2, Kitty 0.48.2, Waybar 0.15.0, Rofi 2.0.0, SwayNC 0.12.6 and Yazi 26.9.1.
 
 ```sh
 python -m unittest discover -s tests -v
 ```
 
-## Credits
+The tests cover install, reapply and restore; task persistence; timer completion; and calendar boundaries. The live checks covered compositor loading, the clipboard store/decode path, Yazi rendering, volume OSD and browser routing. See [installation and limitations](docs/INSTALL.md) for details.
 
-Based on the Mainframe Latão reference artwork and HTML supplied for this project. Built on [Hyprland](https://hypr.land), [Yazi](https://yazi-rs.github.io), [IBM Plex](https://github.com/IBM/plex), GTK and the applications listed above. [New Tab Override](https://addons.mozilla.org/firefox/addon/new-tab-override/) is an optional, separately installed Firefox adapter.
-
-Fonts retain their [OFL license](fonts/OFL.txt). Upstream applications and reference artwork retain their respective rights.
+<sub>Designed from the supplied Mainframe Latão references. [IBM Plex](https://github.com/IBM/plex) fonts retain their [SIL Open Font License](fonts/OFL.txt). Built with [Hyprland](https://hypr.land), [Yazi](https://yazi-rs.github.io), GTK and the other tools listed above. The optional Firefox new-tab adapter is [New Tab Override](https://addons.mozilla.org/firefox/addon/new-tab-override/). Reference artwork and upstream applications retain their respective rights.</sub>

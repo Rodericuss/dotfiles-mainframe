@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 270" role="img" aria-labelledby="title desc">
+<title id="title">Mainframe Latão</title><desc id="desc">Brass and phosphor instrument inspired wordmark</desc>
+<rect width="1200" height="270" fill="#0D0C09"/>
+<path d="M0 0H1200M0 269H1200" stroke="#3A3224"/>
+<path d="M39 25V244M39 25H1160M39 244H1160M1160 25V244" stroke="#6E5836" fill="none"/>
+<path d="M115 198a83 83 0 0 1 166 0" stroke="#3A3224" stroke-width="5" fill="none"/>
+<path d="M115 198a83 83 0 0 1 128-68" stroke="#C8743F" stroke-width="5" fill="none"/>
+<circle cx="198" cy="198" r="9" fill="#B8925A"/>
+<path d="M198 198l53-53" stroke="#E9DFC8" stroke-width="3"/>
+<g stroke="#6E5836" stroke-width="2"><path d="M115 198h-13M127 154l-11-7M159 123l-6-12M198 115v-13M237 123l6-12M269 154l11-7M281 198h13"/></g>
+<text x="345" y="119" fill="#B8925A" font-family="monospace" font-size="13" letter-spacing="6">TERMINAL DE FÓSFORO  /  REV. 01</text>
+<text x="342" y="184" fill="#E9DFC8" font-family="monospace" font-size="57" letter-spacing="2">MAINFRAME <tspan fill="#C8743F">LATÃO</tspan></text>
+<text x="345" y="216" fill="#9EEA8E" font-family="monospace" font-size="15" letter-spacing="3">A QUIETER MACHINE FOR A SHARPER MIND</text>
+<path d="M1110 74h33M1126.5 57v34" stroke="#9EEA8E" stroke-width="2"/>
+</svg>
