@@ -8,8 +8,14 @@ command -v bat >/dev/null && bat cache --build >/dev/null
 pkill -x waybar || true
 "$control" start
 hyprctl reload
-swaync-client --skip-wait -R >/dev/null
-swaync-client --skip-wait -rs >/dev/null
+# Restart, not reload: a reload keeps the config path chosen at startup, so a
+# daemon started before ~/.config/swaync/config.json existed keeps the defaults.
+if systemctl --user is-active -q swaync.service; then
+  systemctl --user restart swaync.service
+else
+  pkill -x swaync || true
+  nohup swaync > "$HOME/.local/state/mainframe/swaync.log" 2>&1 < /dev/null &
+fi
 if command -v hyprpaper >/dev/null; then
   pkill -x hyprpaper || true
   nohup hyprpaper > "$HOME/.local/state/mainframe/hyprpaper.log" 2>&1 < /dev/null &
