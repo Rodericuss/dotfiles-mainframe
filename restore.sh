@@ -2,7 +2,7 @@
 set -euo pipefail
 cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
 if [[ "${1:-}" == '--dry-run' ]]; then
-  exec python scripts/install.py --restore --dry-run
+  exec python3 scripts/install.py --restore --dry-run
 fi
 if [[ -x "$HOME/.config/mainframe/control" ]]; then
   if [[ "$("$HOME/.config/mainframe/control" focus-status)" == true ]]; then
@@ -13,8 +13,8 @@ fi
 systemctl --user stop swaync.service || true
 pkill -x swaync || true
 pkill -x waybar || true
-python scripts/install.py --restore
-python - <<'PY'
+python3 scripts/install.py --restore
+python3 - <<'PY'
 import json,subprocess
 from pathlib import Path
 p=Path.home()/'.local/state/mainframe/services.json'
