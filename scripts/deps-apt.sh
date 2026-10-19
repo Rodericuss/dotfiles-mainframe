@@ -13,7 +13,8 @@ optional=(fish starship neovim bat btop firefox network-manager-gnome blueman br
   fonts-noto-color-emoji)
 
 $dry sudo apt-get update
-$dry sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y "${required[@]}" "${optional[@]}"
+# Without --no-install-recommends, Ubuntu pulls GNOME and GDM, which then owns the boot screen.
+$dry sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends "${required[@]}" "${optional[@]}"
 
 # Debian ships bat as batcat; activate.sh and the shell config call it bat.
 if command -v batcat >/dev/null && ! command -v bat >/dev/null; then
