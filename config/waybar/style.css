@@ -9,7 +9,7 @@ button { border: 0; box-shadow: none; padding: 0; }
 #workspaces button.urgent { background: #D0553F; color: #0D0C09; }
 #workspaces button:hover { background: #3A3224; color: #9EEA8E; }
 #window { color: #9A8E73; padding: 0 12px; }
-#cpu, #memory, #custom-volume, #network, #mpris, #custom-notifications, #battery { border-left: 1px solid #3A3224; padding: 0 10px; }
+#cpu, #memory, #custom-volume, #network, #mpris, #custom-notifications, #custom-tailnet, #battery { border-left: 1px solid #3A3224; padding: 0 10px; }
 #cpu, #memory { color: #CFC4AA; }
 #network { color: #5BA89B; }
 #custom-clock { background: #9EEA8E; color: #0D0C09; font-weight: 600; padding: 0 14px; }
@@ -17,3 +17,5 @@ button { border: 0; box-shadow: none; padding: 0; }
 #battery.critical { background: #D0553F; color: #0D0C09; }
 tooltip { background: #15130E; border: 1px solid #B8925A; }
 tooltip label { color: #CFC4AA; }
+#custom-tailnet:hover { background: #3A3224; }
+#custom-tailnet.down, #custom-tailnet.unavailable { color: #6E5836; }
