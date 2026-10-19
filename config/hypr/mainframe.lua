@@ -1,6 +1,6 @@
 -- Mainframe Latão: the final visual settings override the preserved base.
 hl.config({
- misc = { font_family = "IBM Plex Mono" },
+ misc = { font_family = "IBM Plex Mono", allow_session_lock_restore = true },
  general = { gaps_in = 6, gaps_out = 16, border_size = 2,
    col = { active_border = "rgba(c8743fff)", inactive_border = "rgba(3a3224ff)" } },
  decoration = { rounding = 0, active_opacity = 1.0, inactive_opacity = 1.0,
@@ -28,7 +28,6 @@ end
 hl.on("window.open", function() mainframe_place_yazi() end)
 hl.on("workspace.special_active", function() mainframe_place_yazi() end)
 hl.bind("SUPER + TAB", hl.dsp.exec_cmd("~/.config/mainframe/control dashboard"))
-hl.bind("SUPER + T", hl.dsp.exec_cmd("~/.config/mainframe/control dashboard"))
 hl.bind("SUPER + N", hl.dsp.exec_cmd("swaync-client --toggle-panel"))
 hl.bind("F8", hl.dsp.exec_cmd("~/.config/mainframe/control focus"))
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("~/.config/mainframe/control brightness --inc"))

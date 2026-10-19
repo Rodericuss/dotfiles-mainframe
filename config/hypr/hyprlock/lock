@@ -1,0 +1,5 @@
+#!/bin/sh
+# Trava a sessão com o tema Mainframe Latão (redesenha os fundos para os monitores atuais).
+pgrep -x hyprlock >/dev/null && exit 0
+python3 ~/.config/hypr/hyprlock/render.py
+exec hyprlock "$@"
