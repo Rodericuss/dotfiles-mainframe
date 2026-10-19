@@ -1,0 +1,8 @@
+#!/bin/sh
+# radio wifi|bt [status]  — toggle de rádio para a central de avisos (swaync passa $SWAYNC_TOGGLE_STATE)
+case "$1" in
+ wifi) if [ "$2" = status ]; then [ "$(nmcli radio wifi)" = enabled ] && echo true || echo false
+       elif [ "$SWAYNC_TOGGLE_STATE" = true ]; then nmcli radio wifi on; else nmcli radio wifi off; fi ;;
+ bt)   if [ "$2" = status ]; then bluetoothctl show | grep -q 'Powered: yes' && echo true || echo false
+       elif [ "$SWAYNC_TOGGLE_STATE" = true ]; then bluetoothctl power on; else bluetoothctl power off; fi ;;
+esac

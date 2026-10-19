@@ -5,26 +5,30 @@
   "positionY": "top",
   "layer": "overlay",
   "control-center-layer": "overlay",
-  "control-center-margin-top": 60,
+  "control-center-margin-top": 0,
   "control-center-margin-bottom": 24,
   "control-center-margin-right": 16,
-  "control-center-width": 400,
-  "control-center-height": 700,
+  "control-center-width": 360,
+  "control-center-height": 480,
   "notification-window-width": 380,
   "timeout": 8,
   "timeout-low": 5,
   "timeout-critical": 0,
   "fit-to-screen": false,
   "keyboard-shortcuts": true,
-  "image-visibility": "when-available",
+  "image-visibility": "never",
+  "relative-timestamps": true,
+  "notification-grouping": false,
   "hide-on-clear": false,
   "hide-on-action": true,
   "text-empty": "Nenhum aviso por aqui.",
   "widgets": [
     "title",
     "buttons-grid",
-    "dnd",
     "volume",
+    "backlight",
+    "dnd",
+    "label#hoje",
     "notifications"
   ],
   "widget-config": {
@@ -34,22 +38,34 @@
       "button-text": "LIMPAR"
     },
     "dnd": {
-      "text": "N\u00c3O PERTURBE"
+      "text": "NÃO PERTURBE"
     },
     "volume": {
       "label": "VOL",
       "show-per-app": false
+    },
+    "backlight": {
+      "label": "BRI",
+      "device": "intel_backlight"
+    },
+    "label#hoje": {
+      "text": "HOJE",
+      "max-lines": 1
     },
     "buttons-grid": {
       "buttons-per-row": 4,
       "actions": [
         {
           "label": "WI-FI",
-          "command": "nm-connection-editor"
+          "command": "~/.config/mainframe/scripts/radio wifi",
+          "type": "toggle",
+          "update-command": "~/.config/mainframe/scripts/radio wifi status"
         },
         {
           "label": "BT",
-          "command": "blueman-manager"
+          "command": "~/.config/mainframe/scripts/radio bt",
+          "type": "toggle",
+          "update-command": "~/.config/mainframe/scripts/radio bt status"
         },
         {
           "label": "FOCO",
@@ -65,5 +81,6 @@
         }
       ]
     }
-  }
+  },
+  "transition-time": 150
 }
