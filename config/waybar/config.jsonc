@@ -20,6 +20,7 @@
     "memory",
     "custom/volume",
     "network",
+    "custom/tailnet",
     "custom/notifications",
     "custom/clock"
   ],
@@ -84,6 +85,13 @@
     "max-length": 17,
     "on-click": "nm-connection-editor",
     "tooltip-format": "{ifname} · {ipaddr}"
+  },
+  "custom/tailnet": {
+    "exec": "~/.config/mainframe/scripts/tailnet",
+    "return-type": "json",
+    "interval": 10,
+    "signal": 9,
+    "on-click": "~/.config/mainframe/scripts/tailnet --toggle"
   },
   "mpris": {
     "format": "♪ {title}",
