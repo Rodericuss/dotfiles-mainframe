@@ -6,13 +6,15 @@ Use an existing Wayland session with **Hyprland's Lua configuration API**, teste
 
 Required desktop tools: Python 3, `python-gobject`, `python-cairo`, GTK 3, `gtk-layer-shell`, Hyprland, Hyprpaper, Waybar, Rofi, SwayNC, Kitty, `pamixer`, `playerctl`, `wl-clipboard`, `cliphist`, `libnotify` and Fontconfig. Optional integrations use Fish, Starship, Neovim, Bat, Btop, Firefox, Sidebery and Herdr. Notification shortcuts use `nm-connection-editor` and `blueman-manager`; brightness uses `brightnessctl` on supported internal panels. A Nerd Font fallback supplies file icons in terminal applications.
 
-On Arch, install missing packages using your normal package workflow. Package installation, account setup and editor plugin downloads are outside this installer.
+On Arch, install missing packages using your normal package workflow. On Debian/Ubuntu, `./scripts/deps-apt.sh` installs them with apt (it maps `bat` to `batcat`, lists what apt lacks, such as Yazi and Herdr, and installs Sidebery, Tridactyl and the pt-BR dictionary through `/etc/firefox/policies/policies.json`). Ubuntu 26.04 ships Hyprland 0.53, which predates the Lua configuration API; the script warns about it. Account setup and editor plugin downloads are outside this installer.
 
 ## Apply
 
-Run `./apply.sh --dry-run` to see every destination, then `./apply.sh`. The script copies theme files, installs the bundled fonts, merges a final Lua overlay into an existing `~/.config/hypr/hyprland.lua`, and appends a Kitty include. Existing application theme files such as Rofi, Waybar and Yazi are replaced after backup. It also updates Firefox profiles that contain `prefs.js`, under both `~/.mozilla/firefox` and the XDG location `~/.config/mozilla/firefox`.
+Run `./apply.sh --dry-run` to see every destination, then `./apply.sh`. The script copies theme files, installs the bundled fonts, merges a final Lua overlay into an existing `~/.config/hypr/hyprland.lua`, and appends a Kitty include. Existing application theme files such as Rofi, Waybar and Yazi are replaced after backup. It also updates Firefox profiles that contain `prefs.js`, under `~/.mozilla/firefox`, the XDG location `~/.config/mozilla/firefox` and the snap location `~/snap/firefox/common/.mozilla/firefox`.
 
 `./activate.sh` rebuilds font and Bat caches, reloads Hyprland, restarts the panel, Waybar and Hyprpaper, and restarts SwayNC as the notification owner (a restart, not a reload: a SwayNC daemon started before `~/.config/swaync/config.json` existed keeps the default widgets on reload). It stops Mako for this session. It does not change service enablement. Reopen terminal applications to load their new themes and restart Firefox for its CSS.
+
+The VPN widget in Waybar reads its two Tailscale accounts from `~/.config/mainframe/tailnet.json` (`{"empresa": "...", "casa": "..."}`), which stays out of the repository; without it the widget shows the current tailnet and the toggle is off.
 
 The panel starts with Hyprland through the Lua overlay. Logs and user data are under `~/.local/state/mainframe/`; the local control socket is under `$XDG_RUNTIME_DIR/mainframe-$UID/`.
 

@@ -37,7 +37,7 @@ for src in sorted((ROOT/'config').rglob('*')):
  if src.relative_to(ROOT/'config').as_posix() in ('hypr/hyprland.lua','kitty/kitty.conf'):continue
  data=src.read_bytes()
  if src.name=='hyprpaper.conf':data=('splash = false\nwallpaper {\n    monitor =\n    path = '+str(home/'.config/mainframe/wallpaper.png')+'\n}\n').encode()
- write(home/'.config'/src.relative_to(ROOT/'config'),data,0o755 if src.name in ('control','volume-bar','clock') else 0o644)
+ write(home/'.config'/src.relative_to(ROOT/'config'),data,0o755 if src.stat().st_mode&0o111 else 0o644)
 for src in sorted((ROOT/'fonts').glob('*')):write(home/'.local/share/fonts/mainframe'/src.name,src.read_bytes())
 # Preserve existing Kitty keymaps, shell integration and local settings.
 kitty=home/'.config/kitty/kitty.conf';old=read(kitty)
@@ -60,7 +60,7 @@ for name,command in [('control','"$@"')]:
  write(home/'.config/neobrutal'/name,b'#!/usr/bin/env bash\nexec "$HOME/.config/mainframe/control" "$@"\n',0o755)
 write(home/'scripts/f1_hypr_conf.sh',b'#!/usr/bin/env bash\nexec "$HOME/.config/mainframe/control" focus\n',0o755)
 # Match installed profiles, including Firefox profile groups absent in profiles.ini.
-for profile in sorted(p for root in ('.mozilla/firefox','.config/mozilla/firefox') for p in (home/root).glob('*')):
+for profile in sorted(p for root in ('.mozilla/firefox','.config/mozilla/firefox','snap/firefox/common/.mozilla/firefox') for p in (home/root).glob('*')):
  prefs=profile/'prefs.js'
  if not profile.is_dir() or not prefs.exists():continue
  uuid=None
