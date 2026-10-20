@@ -17,7 +17,7 @@ def message(data,start=True):
             with socket.socket(socket.AF_UNIX) as s:s.settimeout(1);s.connect(str(RUNTIME/'shell.sock'));s.sendall(json.dumps(data).encode());return s.recv(32)
         except OSError:
             if not start:return
-            if attempt==0:daemon(['python',str(ROOT/'shell.py')],'shell')
+            if attempt==0:daemon(['python3',str(ROOT/'shell.py')],'shell')
             time.sleep(.1)
     raise SystemExit('Mainframe: não foi possível iniciar o painel. Veja '+str(STATE/'shell.log'))
 def lua(code):
