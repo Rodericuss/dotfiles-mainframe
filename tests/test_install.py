@@ -10,7 +10,7 @@ class InstallTests(unittest.TestCase):
    home=Path(folder);rofi=home/'.config/rofi/config.rasi';rofi.parent.mkdir(parents=True);rofi.write_text('original\n')
    hypr=home/'.config/hypr/hyprland.lua';hypr.parent.mkdir(parents=True);hypr.write_text('-- hardware settings belong to this machine\nhl.monitor({output="TEST",mode="preferred"})\n')
    kitty=home/'.config/kitty/kitty.conf';kitty.parent.mkdir(parents=True);kitty.write_text('map ctrl+x new_window\n')
-   def apply(*args):subprocess.run(['python',str(ROOT/'scripts/install.py'),'--home',folder,*args],check=True,stdout=subprocess.DEVNULL)
+   def apply(*args):subprocess.run(['python3',str(ROOT/'scripts/install.py'),'--home',folder,*args],check=True,stdout=subprocess.DEVNULL)
    apply('--dry-run');self.assertFalse((home/'.config/mainframe').exists())
    apply();apply()
    self.assertEqual(hypr.read_text().count('-- BEGIN MAINFRAME INTEGRATION'),1)
@@ -26,6 +26,6 @@ class InstallTests(unittest.TestCase):
    home=Path(folder)
    for root in ('.mozilla/firefox','.config/mozilla/firefox'):
     profile=home/root/'abc.default-release';profile.mkdir(parents=True);(profile/'prefs.js').write_text('')
-   subprocess.run(['python',str(ROOT/'scripts/install.py'),'--home',folder],check=True,stdout=subprocess.DEVNULL)
+   subprocess.run(['python3',str(ROOT/'scripts/install.py'),'--home',folder],check=True,stdout=subprocess.DEVNULL)
    for root in ('.mozilla/firefox','.config/mozilla/firefox'):
     self.assertIn('BEGIN MAINFRAME FIREFOX',(home/root/'abc.default-release/chrome/userChrome.css').read_text())
